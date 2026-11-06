@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>TicketWifi Niger</title>
+  <meta name="description" content="Trouvez et choisissez votre forfait Wi-Fi au Niger.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <a class="logo" href="#">Ticket<span>Wifi</span> Niger</a>
+    <button id="loginBtn" class="btn-outline">Connexion</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="tag">LE WIFI À PORTÉE DE MAIN</p>
+      <h1>Connectez-vous au<br><span>monde entier.</span></h1>
+      <p>Découvrez les zones Wi-Fi disponibles et choisissez le forfait qui vous convient.</p>
+      <a href="#zones" class="btn-primary">Découvrir les zones Wi-Fi</a>
+    </section>
+
+    <section id="zones" class="section">
+      <h2>Zones Wi-Fi disponibles</h2>
+      <p class="muted">Retrouvez les points d'accès près de vous.</p>
+      <div id="zonesList" class="cards">
+        <p>Les zones Wi-Fi seront affichées ici.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nos forfaits Wi-Fi</h2>
+      <p class="muted">Choisissez une offre selon vos besoins.</p>
+      <div id="offersList" class="cards">
+        <p>Les forfaits seront affichés ici.</p>
+      </div>
+    </section>
+
+    <section class="section info">
+      <h2>Comment ça marche ?</h2>
+      <div class="steps">
+        <p>1. Trouvez une zone Wi-Fi.</p>
+        <p>2. Choisissez votre forfait.</p>
+        <p>3. Effectuez votre paiement lorsque le service sera activé.</p>
+        <p>4. Recevez votre ticket de connexion.</p>
+      </div>
+      <p class="notice">Les achats et paiements en ligne seront activés après la configuration du système de paiement.</p>
+    </section>
+
+    <section id="adminSection" class="section admin hidden">
+      <h2>Administration</h2>
+      <p class="muted">Gestion des zones et des forfaits.</p>
+
+      <h3>Ajouter une zone Wi-Fi</h3>
+      <form id="zoneForm">
+        <input id="zoneName" placeholder="Nom de la zone" required>
+        <input id="zoneCity" placeholder="Ville" required>
+        <textarea id="zoneDescription" placeholder="Description"></textarea>
+        <button class="btn-primary" type="submit">Ajouter la zone</button>
+      </form>
+
+      <h3>Ajouter un forfait</h3>
+      <form id="offerForm">
+        <input id="offerName" placeholder="Nom du forfait" required>
+        <input id="offerPrice" type="number" min="1" placeholder="Prix en FCFA" required>
+        <input id="offerDuration" type="number" min="1" placeholder="Durée en minutes" required>
+        <textarea id="offerDescription" placeholder="Description"></textarea>
+        <button class="btn-primary" type="submit">Ajouter le forfait</button>
+      </form>
+
+      <button id="logoutBtn" class="btn-outline">Déconnexion</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 TicketWifi Niger — Tous droits réservés.</p>
+  </footer>
+
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModal" class="close">×</button>
+      <h2>Connexion administrateur</h2>
+      <form id="loginForm">
+        <input id="email" type="email" placeholder="Adresse e-mail" required>
+        <input id="password" type="password" placeholder="Mot de passe" required>
+        <button class="btn-primary" type="submit">Se connecter</button>
+      </form>
+      <p id="loginMessage"></p>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
