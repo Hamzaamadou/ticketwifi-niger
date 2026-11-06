@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Inscription propriétaire - TicketWifi Niger</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .register-container {
+      max-width: 520px;
+      margin: 45px auto;
+      padding: 25px;
+      background: #19263a;
+      border-radius: 16px;
+    }
+    .register-container h1 {
+      margin-bottom: 10px;
+    }
+    .register-container p {
+      color: #aab6c8;
+      margin-bottom: 20px;
+    }
+    .register-container form {
+      max-width: none;
+    }
+    .register-container button {
+      width: 100%;
+    }
+    .trial {
+      padding: 15px;
+      background: #263b31;
+      color: #a7f3c0;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    #message {
+      overflow-wrap: anywhere;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a class="logo" href="index.html">Ticket<span>Wifi</span> Niger</a>
+  </header>
+
+  <main class="register-container">
+    <h1>Devenir propriétaire Wi-Fi</h1>
+
+    <p>Créez votre compte et gérez vos propres zones Wi-Fi.</p>
+
+    <div class="trial">
+      🎉 Profitez de 10 jours d'essai gratuit après votre inscription.
+    </div>
+
+    <form id="ownerRegisterForm">
+      <input
+        id="ownerName"
+        type="text"
+        placeholder="Nom complet"
+        required
+      >
+
+      <input
+        id="businessName"
+        type="text"
+        placeholder="Nom de votre entreprise"
+        required
+      >
+
+      <input
+        id="ownerPhone"
+        type="tel"
+        placeholder="Numéro de téléphone"
+        required
+      >
+
+      <input
+        id="ownerEmail"
+        type="email"
+        placeholder="Adresse e-mail"
+        required
+      >
+
+      <input
+        id="ownerPassword"
+        type="password"
+        placeholder="Mot de passe (8 caractères minimum)"
+        minlength="8"
+        required
+      >
+
+      <input
+        id="ownerPasswordConfirm"
+        type="password"
+        placeholder="Confirmer le mot de passe"
+        minlength="8"
+        required
+      >
+
+      <button class="btn-primary" type="submit" id="registerButton">
+        Créer mon compte propriétaire
+      </button>
+    </form>
+
+    <p id="message" role="status"></p>
+
+    <p>
+      Vous avez déjà un compte ?
+      <a href="index.html" style="color:#ff8a00">Retour à l'accueil</a>
+    </p>
+  </main>
+
+  <footer>
+    <p>© 2026 TicketWifi Niger</p>
+  </footer>
+
+  <script type="module" src="owner-register.js"></script>
+</body>
+</html>
