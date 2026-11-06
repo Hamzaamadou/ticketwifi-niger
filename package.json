@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@netlify/blobs": "latest"
+    "firebase-admin": "^13.0.0"
   }
 }
