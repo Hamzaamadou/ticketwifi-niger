@@ -59,28 +59,17 @@ form.addEventListener("submit", async (event) => {
       createdAt: serverTimestamp()
     });
 
-    form.reset();
-
-    message.textContent =
-      "Félicitations ! Votre compte propriétaire est créé. Votre essai gratuit de 10 jours commence maintenant.";
-
-    const link = document.createElement("a");
-    link.href = "index.html";
-    link.textContent = "Retourner à l'accueil";
-    link.style.color = "#ff8a00";
-    message.appendChild(document.createElement("br"));
-    message.appendChild(link);
-
-    form.classList.add("hidden");
+    message.textContent = "Compte créé ! Ouverture de votre espace...";
+    window.location.href = "owner-dashboard.html";
 
   } catch (error) {
     console.error(error);
 
     const messages = {
       "auth/email-already-in-use": "Cette adresse e-mail possède déjà un compte.",
-      "auth/invalid-email": "L'adresse e-mail est invalide.",
-      "auth/weak-password": "Le mot de passe est trop faible.",
-      "permission-denied": "Accès refusé par Firebase. Vérifions les règles Firestore."
+      "auth/invalid-email": "Adresse e-mail invalide.",
+      "auth/weak-password": "Mot de passe trop faible.",
+      "permission-denied": "Accès refusé par Firebase. Vérifiez les règles Firestore."
     };
 
     message.textContent =
