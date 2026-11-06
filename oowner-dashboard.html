@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Espace propriétaire - TicketWifi Niger</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .dashboard {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    .welcome, .panel, .stat {
+      background: #19263a;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+    .welcome h1 { color: #ff8a00; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 15px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: #ff8a00;
+    }
+    .panel h2 { margin-bottom: 15px; }
+    .status {
+      color: #a7f3c0;
+      margin-top: 10px;
+    }
+    .danger {
+      color: #ffb4b4;
+    }
+    .dashboard form { max-width: 100%; }
+    .dashboard button { margin-top: 5px; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html">Ticket<span>Wifi</span> Niger</a>
+  <button id="logoutBtn" class="btn-outline">Déconnexion</button>
+</header>
+
+<main class="dashboard">
+
+  <section class="welcome">
+    <h1>Mon espace propriétaire</h1>
+    <p>Bienvenue, <strong id="ownerName">Chargement...</strong></p>
+    <p id="businessName"></p>
+    <p id="trialStatus" class="status">Vérification de votre abonnement...</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      Zones Wi-Fi
+      <strong id="zoneCount">0</strong>
+    </div>
+    <div class="stat">
+      Forfaits
+      <strong id="offerCount">0</strong>
+    </div>
+    <div class="stat">
+      Essai gratuit
+      <strong id="daysRemaining">--</strong>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Ajouter une zone Wi-Fi</h2>
+    <form id="zoneForm">
+      <input id="zoneName" placeholder="Nom de la zone" required>
+      <input id="zoneCity" placeholder="Ville" required>
+      <input id="zoneAddress" placeholder="Adresse ou quartier" required>
+      <textarea id="zoneDescription" placeholder="Description de la zone"></textarea>
+      <button class="btn-primary" type="submit">Ajouter ma zone</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Créer un forfait Wi-Fi</h2>
+    <form id="offerForm">
+      <input id="offerName" placeholder="Nom du forfait" required>
+      <input id="offerPrice" type="number" min="1" placeholder="Prix en FCFA" required>
+      <input id="offerDuration" type="number" min="1" placeholder="Durée en minutes" required>
+      <textarea id="offerDescription" placeholder="Description"></textarea>
+      <label for="offerZone">Zone Wi-Fi</label>
+      <select id="offerZone" required>
+        <option value="">Choisir une zone</option>
+      </select>
+      <button class="btn-primary" type="submit">Créer mon forfait</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Mes zones Wi-Fi</h2>
+    <div id="myZones">Chargement...</div>
+  </section>
+
+  <section class="panel">
+    <h2>Mes forfaits</h2>
+    <div id="myOffers">Chargement...</div>
+  </section>
+
+  <section class="panel">
+    <h2>Mes ventes</h2>
+    <p>Le suivi des ventes sera disponible après la mise en place du paiement sécurisé et de l'attribution des tickets.</p>
+  </section>
+
+  <p id="dashboardMessage" role="status"></p>
+
+</main>
+
+<footer>
+  <p>© 2026 TicketWifi Niger</p>
+</footer>
+
+<script type="module" src="owner-dashboard.js"></script>
+
+</body>
+</html>
