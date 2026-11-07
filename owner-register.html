@@ -206,6 +206,40 @@
         gap: 7px;
       }
     }
+    
+/* CORRECTION VISIBILITÉ DES CHAMPS */
+
+.register-container input,
+.register-container select {
+  color: #222222 !important;
+  -webkit-text-fill-color: #222222 !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  font-weight: 500;
+}
+
+.register-container input::placeholder {
+  color: #777777 !important;
+  -webkit-text-fill-color: #777777 !important;
+  opacity: 1 !important;
+}
+
+.register-container label {
+  color: #222222 !important;
+  font-weight: 600;
+}
+
+.register-container input:focus,
+.register-container select:focus {
+  border: 2px solid #ff8a00 !important;
+  outline: none;
+}
+
+/* Compatibilité Android */
+.register-container input:-webkit-autofill {
+  -webkit-text-fill-color: #222222 !important;
+  transition: background-color 9999s;
+}
   </style>
 </head>
 
