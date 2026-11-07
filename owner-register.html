@@ -1,123 +1,397 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101827">
-  <title>Inscription propriétaire - TicketWifi Niger</title>
+
+  <title>Créer un compte propriétaire - TicketWifi Niger</title>
+
   <link rel="stylesheet" href="styles.css">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f8fa;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
+
     .register-container {
-      max-width: 520px;
-      margin: 45px auto;
-      padding: 25px;
-      background: #19263a;
+      width: 100%;
+      max-width: 680px;
+      margin: 25px auto;
+      padding: 30px;
+      background: white;
+      border: 1px solid #ddd;
       border-radius: 16px;
     }
+
     .register-container h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 23px;
+      min-width: 0;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
       margin-bottom: 10px;
     }
-    .register-container p {
-      color: #aab6c8;
-      margin-bottom: 20px;
-    }
-    .register-container form {
-      max-width: none;
-    }
-    .register-container button {
+
+    input, select {
       width: 100%;
+      min-width: 0;
+      height: 54px;
+      padding: 0 15px;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      background: #fff;
+      font-size: 16px;
+      outline: none;
     }
-    .trial {
-      padding: 15px;
-      background: #263b31;
-      color: #a7f3c0;
-      border-radius: 10px;
-      margin-bottom: 20px;
+
+    input:focus, select:focus {
+      border-color: #ff8a00;
     }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: 42% 58%;
+      gap: 10px;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 55px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border: none;
+      background: transparent;
+      color: #777;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 17px;
+      border: 1px solid #ddd;
+      border-radius: 17px;
+      margin: 25px 0;
+    }
+
+    .terms input {
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .terms label {
+      font-weight: normal;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .terms a {
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .btn-register {
+      width: 100%;
+      height: 58px;
+      background: #151515;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-register:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
     #message {
+      margin-top: 18px;
+      text-align: center;
       overflow-wrap: anywhere;
-      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 35px;
+      padding: 25px 10px;
+      border-top: 1px solid #eee;
+      color: #777;
+    }
+
+    .login-link a {
+      color: #151515;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 480px) {
+      .register-container {
+        margin: 0 auto;
+        padding: 22px 18px;
+        border-radius: 0;
+      }
+
+      .register-container h1 {
+        font-size: 27px;
+      }
+
+      .form-row {
+        gap: 12px;
+      }
+
+      input, select {
+        font-size: 15px;
+        padding: 0 11px;
+      }
+
+      .phone-row {
+        grid-template-columns: 43% 57%;
+        gap: 7px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header class="header">
-    <a class="logo" href="index.html">Ticket<span>Wifi</span> Niger</a>
+    <a class="logo" href="index.html">
+      Ticket<span>Wifi</span> Niger
+    </a>
   </header>
 
   <main class="register-container">
-    <h1>Devenir propriétaire Wi-Fi</h1>
 
-    <p>Créez votre compte et gérez vos propres zones Wi-Fi.</p>
+    <h1>Créer un compte</h1>
+
+    <p class="subtitle">
+      Rejoignez TicketWifi Niger et vendez vos tickets WiFi
+      en toute simplicité.
+    </p>
 
     <div class="trial">
-      🎉 Profitez de 10 jours d'essai gratuit après votre inscription.
+      🎉 Profitez de 10 jours d'essai gratuit.
     </div>
 
     <form id="ownerRegisterForm">
-      <input
-        id="ownerName"
-        type="text"
-        placeholder="Nom complet"
-        required
-      >
 
-      <input
-        id="businessName"
-        type="text"
-        placeholder="Nom de votre entreprise"
-        required
-      >
+      <div class="form-row">
 
-      <input
-        id="ownerPhone"
-        type="tel"
-        placeholder="Numéro de téléphone"
-        required
-      >
+        <div class="form-group">
+          <label for="ownerName">Prénom et Nom</label>
+          <input
+            id="ownerName"
+            type="text"
+            placeholder="Votre nom complet"
+            required
+          >
+        </div>
 
-      <input
-        id="ownerEmail"
-        type="email"
-        placeholder="Adresse e-mail"
-        required
-      >
+        <div class="form-group">
+          <label for="ownerCity">Ville</label>
+          <input
+            id="ownerCity"
+            type="text"
+            placeholder="Niamey"
+            required
+          >
+        </div>
 
-      <input
-        id="ownerPassword"
-        type="password"
-        placeholder="Mot de passe (8 caractères minimum)"
-        minlength="8"
-        required
-      >
+      </div>
 
-      <input
-        id="ownerPasswordConfirm"
-        type="password"
-        placeholder="Confirmer le mot de passe"
-        minlength="8"
-        required
-      >
+      <div class="form-group">
+        <label for="ownerEmail">Adresse e-mail</label>
+        <input
+          id="ownerEmail"
+          type="email"
+          placeholder="nom@exemple.com"
+          required
+        >
+      </div>
 
-      <button class="btn-primary" type="submit" id="registerButton">
-        Créer mon compte propriétaire
+      <div class="form-group">
+        <label for="ownerPhone">
+          Numéro WhatsApp <span style="color:#999">(facultatif)</span>
+        </label>
+
+        <div class="phone-row">
+
+          <select id="phoneCountry">
+            <option value="+227">Niger (+227)</option>
+            <option value="+226">Burkina Faso (+226)</option>
+            <option value="+229">Bénin (+229)</option>
+            <option value="+223">Mali (+223)</option>
+            <option value="+221">Sénégal (+221)</option>
+            <option value="+225">Côte d'Ivoire (+225)</option>
+            <option value="+228">Togo (+228)</option>
+          </select>
+
+          <input
+            id="ownerPhone"
+            type="tel"
+            placeholder="80 00 00 00"
+          >
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ownerPassword">Mot de passe</label>
+
+        <div class="password-wrapper">
+          <input
+            id="ownerPassword"
+            type="password"
+            placeholder="8 caractères minimum"
+            minlength="8"
+            required
+          >
+
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="ownerPassword"
+            aria-label="Afficher le mot de passe"
+          >◉</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ownerPasswordConfirm">
+          Confirmer le mot de passe
+        </label>
+
+        <div class="password-wrapper">
+          <input
+            id="ownerPasswordConfirm"
+            type="password"
+            placeholder="Confirmez votre mot de passe"
+            minlength="8"
+            required
+          >
+
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="ownerPasswordConfirm"
+            aria-label="Afficher le mot de passe"
+          >◉</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="businessName">Nom de la Zone WiFi</label>
+        <input
+          id="businessName"
+          type="text"
+          placeholder="Ma Zone WiFi"
+          required
+        >
+      </div>
+
+      <div class="terms">
+
+        <input
+          id="acceptTerms"
+          type="checkbox"
+          required
+        >
+
+        <label for="acceptTerms">
+          J'accepte les
+          <a href="conditions.html" target="_blank">
+            conditions générales d'utilisation
+          </a>.
+        </label>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn-register"
+        id="registerButton"
+      >
+        S'inscrire
       </button>
+
     </form>
 
-    <p id="message" role="status"></p>
+    <p id="message" role="status" aria-live="polite"></p>
 
-    <p>
-      Vous avez déjà un compte ?
-      <a href="index.html" style="color:#ff8a00">Retour à l'accueil</a>
-    </p>
+    <div class="login-link">
+      Déjà un compte ?
+      <a href="owner-login.html">Se connecter</a>
+    </div>
+
   </main>
 
-  <footer>
-    <p>© 2026 TicketWifi Niger</p>
-  </footer>
+  <script>
+    document.querySelectorAll(".toggle-password").forEach(button => {
+      button.addEventListener("click", () => {
+        const input = document.getElementById(button.dataset.target);
+        input.type = input.type === "password" ? "text" : "password";
+      });
+    });
+  </script>
 
   <script type="module" src="owner-register.js"></script>
+
 </body>
 </html>
