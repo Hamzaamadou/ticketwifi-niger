@@ -1,9 +1,7 @@
-
 import { auth, db } from "./firebase-config.js";
 
 import {
   signInWithEmailAndPassword,
-  onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
@@ -15,28 +13,6 @@ import {
 const form = document.getElementById("ownerLoginForm");
 const message = document.getElementById("loginMessage");
 const button = document.getElementById("loginButton");
-
-onAuthStateChanged(auth, async (user) => {
-  if (!user) return;
-
-  try {
-    const profile = await getDoc(doc(db, "users", user.uid));
-
-    if (
-      profile.exists() &&
-      profile.data().role === "owner" &&
-      profile.data().status === "active"
-    ) {
-      window.location.replace("owner-dashboard.html");
-    } else {
-      await signOut(auth);
-      message.textContent = "Ce compte n'est pas un compte propriétaire actif.";
-    }
-  } catch (error) {
-    console.error(error);
-    message.textContent = "Impossible de vérifier votre compte.";
-  }
-});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -55,23 +31,39 @@ form.addEventListener("submit", async (event) => {
       password
     );
 
-    const profile = await getDoc(doc(db, "users", result.user.uid));
+    const user = result.user;
 
-    if (
-      !profile.exists() ||
-      profile.data().role !== "owner" ||
-      profile.data().status !== "active"
-    ) {
+    if (!user.emailVerified) {
       await signOut(auth);
-      message.textContent = "Compte propriétaire introuvable ou désactivé.";
+      message.textContent =
+        "Veuillez vérifier votre adresse e-mail avant de vous connecter.";
+      return;
+    }
+
+    const profileRef = doc(db, "users", user.uid);
+    const profile = await getDoc(profileRef);
+
+    if (!profile.exists()) {
+      await signOut(auth);
+      message.textContent =
+        "Profil propriétaire absent. Votre inscription doit être finalisée.";
+      return;
+    }
+
+    const data = profile.data();
+
+    if (data.role !== "owner" || data.status !== "active") {
+      await signOut(auth);
+      message.textContent =
+        "Ce compte n'est pas un compte propriétaire actif.";
       return;
     }
 
     message.textContent = "Connexion réussie !";
-    window.location.href = "owner-dashboard.html";
+    window.location.replace("owner-dashboard.html");
 
   } catch (error) {
-    console.error(error);
+    console.error("Erreur de connexion :", error);
 
     message.textContent =
       "Connexion impossible. Vérifiez votre adresse e-mail et votre mot de passe.";
